@@ -181,15 +181,7 @@ If you find our work useful, please cite the following paper:
 ```
 
 ## Acknowledgements
-Thanks to these great repositories:
-- [Depth Anything V2](https://github.com/DepthAnything/Depth-Anything-V2)
-- [MiDaS](https://github.com/isl-org/MiDaS)
-- [GenPercept](https://github.com/aim-uofa/GenPercept)
-- [GeoBench: 3D Geometry Estimation Made Easy](https://github.com/aim-uofa/geobench)
-- [HDN](https://github.com/icoz69/HDN)
-- [Detectron2](https://github.com/facebookresearch/detectron2)
-<br>
-and many other inspiring works in the community.
+Thanks to these great repositories: [Depth Anything V2](https://github.com/DepthAnything/Depth-Anything-V2)，[MiDaS](https://github.com/isl-org/MiDaS)，[GenPercept](https://github.com/aim-uofa/GenPercept)，[GeoBench: 3D Geometry Estimation Made Easy](https://github.com/aim-uofa/geobench)，[HDN](https://github.com/icoz69/HDN)，[Detectron2](https://github.com/facebookresearch/detectron2) and many other inspiring works in the community.
 
 ## Star History
 
