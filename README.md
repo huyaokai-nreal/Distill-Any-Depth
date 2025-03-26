@@ -31,11 +31,11 @@ We present Distill-Any-Depth, a new SOTA monocular depth estimation model traine
 
 ## News
 - **2025-03-08:** We release the small size of our model(Dav2).
-- **2025-03-02:🔥🔥🔥** Our demo is updated to GPU version. Enjoy it! We also include the Gradio demo code in this repo.
+- **2025-03-02:** Our demo is updated to GPU version. Enjoy it! We also include the Gradio demo code in this repo.
 - **2025-02-26:🔥🔥🔥** Paper, project page, code, models, and demos are  released.
 
 ## TODO
-- Release training code.
+- Release evaluation and training code.
 - Release additional models in various sizes.
 
 ## Pre-trained Models
@@ -106,6 +106,23 @@ for model in "${model_list[@]}"; do
 done
 ```
 
+## Use from transformers
+Here is how to use this model to perform zero-shot depth estimation:
+
+```python
+from transformers import pipeline
+from PIL import Image
+import requests
+# load pipe
+pipe = pipeline(task="depth-estimation", model="xingyang1/Distill-Any-Depth-Large-hf")
+# load image
+url = 'http://images.cocodataset.org/val2017/000000039769.jpg'
+image = Image.open(requests.get(url, stream=True).raw)
+# inference
+depth = pipe(image)["depth"]
+```
+We are sincerely grateful to [@keetrap](https://github.com/keetrap) and [@Niels Rogge](https://huggingface.co/nielsr) for their huge efforts in supporting our models in Transformers.
+
 ## Gradio demo
 We also include the Gradio demo code, Please clone the project and set up the environment using pip install.
 
@@ -163,14 +180,15 @@ If you find our work useful, please cite the following paper:
 }
 ```
 
-## Related Projects
-
+## Acknowledgements
+Thanks to these great repositories:
 - [Depth Anything V2](https://github.com/DepthAnything/Depth-Anything-V2)
 - [MiDaS](https://github.com/isl-org/MiDaS)
 - [GenPercept](https://github.com/aim-uofa/GenPercept)
 - [GeoBench: 3D Geometry Estimation Made Easy](https://github.com/aim-uofa/geobench)
 - [HDN](https://github.com/icoz69/HDN)
 - [Detectron2](https://github.com/facebookresearch/detectron2)
+and many other inspiring works in the community.
 
 ## Star History
 
