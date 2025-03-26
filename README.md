@@ -35,8 +35,8 @@ We present Distill-Any-Depth, a new SOTA monocular depth estimation model traine
 - **2025-02-26:🔥🔥🔥** Paper, project page, code, models, and demos are  released.
 
 ## TODO
-- Release evaluation and training code.
-- Release additional models in various sizes.
+- [ ] Release evaluation and training code.
+- [ ] Release additional models in various sizes.
 
 ## Pre-trained Models
 
@@ -188,6 +188,7 @@ Thanks to these great repositories:
 - [GeoBench: 3D Geometry Estimation Made Easy](https://github.com/aim-uofa/geobench)
 - [HDN](https://github.com/icoz69/HDN)
 - [Detectron2](https://github.com/facebookresearch/detectron2)
+<br>
 and many other inspiring works in the community.
 
 ## Star History
