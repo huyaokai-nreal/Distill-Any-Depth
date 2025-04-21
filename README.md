@@ -30,7 +30,7 @@ We present Distill-Any-Depth, a new SOTA monocular depth estimation model traine
 ![teaser](data/teaser/depthmap.png)
 
 ## News
-- **2025-03-08:** We release the small size of our model(Dav2).
+- **2025-03-08:** We release the small size of our model based on DAv2.
 - **2025-03-02:** Our demo is updated to GPU version. Enjoy it! We also include the Gradio demo code in this repo.
 - **2025-02-26:🔥🔥🔥** Paper, project page, code, models, and demos are  released.
 
@@ -166,6 +166,7 @@ IMPORTANT: You are using gradio version 4.36.0, however version 4.44.1 is availa
 
 ![teaser](data/teaser/teaser.png)
 
+![teaser](data/teaser/point_cloud_00.png)
 
 ## Citation
 
