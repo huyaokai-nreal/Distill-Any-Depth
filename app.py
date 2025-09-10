@@ -17,6 +17,7 @@ def process_image(image, model, device):
         return None
     
     # Preprocess the image
+    # import ipdb;ipdb.set_trace()
     image_np = np.array(image)[..., ::-1] / 255
     
     transform = Compose([
@@ -87,20 +88,30 @@ def gradio_interface(image, model_size):
 
     # 根据用户选择的模型大小加载对应的 checkpoint
     if model_size == "large":
-        checkpoint_path = hf_hub_download(repo_id=f"xingyang1/Distill-Any-Depth", filename=f"large/model.safetensors", repo_type="model")
+        checkpoint_path = "models/large.safetensors"
     elif model_size == "base":
-        checkpoint_path = hf_hub_download(repo_id=f"xingyang1/Distill-Any-Depth", filename=f"base/model.safetensors", repo_type="model")
+        checkpoint_path = "models/base.safetensors"
     elif model_size == "small":
-        checkpoint_path = hf_hub_download(repo_id=f"xingyang1/Distill-Any-Depth", filename=f"small/model.safetensors", repo_type="model")
+        checkpoint_path = "models/small.safetensors"
     else:
         raise ValueError(f"Unknown model size: {model_size}")
-
     # 加载模型
     if model_size == "large":
         model = DepthAnything(**model_kwargs[model_size]).to(device)
     else:
         model = DepthAnythingV2(**model_kwargs[model_size]).to(device)
     model_weights = load_file(checkpoint_path)
+    total_params = 0
+    for param in model_weights.values():
+        num_params = param.numel()
+        total_params += num_params
+        
+    # 每个参数通常为 torch.float32 类型，占 4 个字节
+    total_bytes = total_params * 4
+    # 转换为 MB
+    total_mb = total_bytes / (1024 * 1024)
+    print(f"模型的总参数量为: {total_params}")
+    print(f"模型的总参数量占用的存储空间约为: {total_mb:.2f} MB")
     model.load_state_dict(model_weights)
     model = model.to(device)
     
@@ -116,7 +127,7 @@ iface = gr.Interface(
     fn=gradio_interface,
     inputs=[
         gr.Image(type="pil"),  # 图像输入
-        gr.Dropdown(choices=["large", "base", "small"], label="Model Size", value="large")  # 模型大小选择
+        gr.Dropdown(choices=["large", "base", "small"], label="Model Size", value="small")  # 模型大小选择
     ],
     outputs=gr.Image(type="pil"),  # 深度图输出
     title="Depth Estimation Demo",
